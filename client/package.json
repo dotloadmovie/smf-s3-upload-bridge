@@ -7,12 +7,17 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "node-sass": "^4.5.3",
     "react-scripts": "1.0.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build-css": "node-sass src/css/index.scss src/css/index.css",
+    "watch-css": "npm run build-css && node-sass src/css/index.scss src/css/index.css --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost"
 }
