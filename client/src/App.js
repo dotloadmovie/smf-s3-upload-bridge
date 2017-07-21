@@ -67,6 +67,7 @@ class App extends Component {
         </div>
         <History
           open={this.state.historyOpen}
+          handleRecent={this.handleRecent.bind(this)}
         />
         <Footer
           handleRecent={this.handleRecent.bind(this)}
