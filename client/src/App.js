@@ -16,6 +16,7 @@ class App extends Component {
 
     this.state = {
       historyOpen: false,
+      localStorageAvailable: (window.localStorage) ? true : false,
     }
 
     // this only needs to happen once. Percolates down into all sub-components
@@ -54,6 +55,11 @@ class App extends Component {
         console.log(response);
       }
     });
+
+    if (this.state.localStorageAvailable) {
+
+    }
+
   }
 
 
@@ -65,13 +71,20 @@ class App extends Component {
         <div className="container full-width pad-all-20">
 
         </div>
+
+        {this.state.localStorageAvailable &&
         <History
           open={this.state.historyOpen}
           handleRecent={this.handleRecent.bind(this)}
         />
+        }
+
+        {this.state.localStorageAvailable &&
         <Footer
           handleRecent={this.handleRecent.bind(this)}
         />
+        }
+
       </div>
     </MuiThemeProvider>
     );
